@@ -65,7 +65,7 @@ class root.StatCellView extends Backbone.View
     render: =>
         @$el.html(Template.statCell(
             name: @player.get('name')
-            statType: root.statTypeToString(@staType)
+            statType: root.statTypeToString(@statType)
             ))
         @$el.find('.stat-inp-cell').addClass root.statTypeToString(@statType)
         @showValue()
