@@ -37,7 +37,7 @@ class root.ServeSelectorController
 
 
 class root.ServeSelectorView extends Backbone.View
-    className: 'serve-selector modal-container'
+    className: 'serve-selector cs-modal-container'
     initialize: (args) =>
         @controller = args.controller
         @model = args.model
@@ -91,7 +91,7 @@ class root.ServeSelectorView extends Backbone.View
         @$('.serve-value').html val
 
     show: =>
-        @$el.find('.modal').addClass('showing')
+        @$el.find('.cs-modal').addClass('showing')
         @selectorModel.set('hasClicked', false)
         @_clearCanvas()
         @_drawAreaLines()
@@ -99,7 +99,7 @@ class root.ServeSelectorView extends Backbone.View
 
 
     hide: =>
-        @$('.modal').removeClass('showing')
+        @$('.cs-modal').removeClass('showing')
 
     _drawAreaLines: =>
         canvas = @$('.serve-selector-canvas')[0]

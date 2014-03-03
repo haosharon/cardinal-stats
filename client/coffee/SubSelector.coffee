@@ -41,7 +41,7 @@ class root.SubSelectorController
         @currentController.makeSub newPlayer, previousPlayer
 
 class root.SubSelectorView extends Backbone.View
-    className: 'sub-selector modal-container'
+    className: 'sub-selector cs-modal-container'
     initialize: (args) =>
         @controller = args.controller
         @team = args.team
@@ -50,7 +50,7 @@ class root.SubSelectorView extends Backbone.View
         @render()
 
         @team.on 'change:activePlayers', =>
-            isShowing = @$('.modal').hasClass('showing')
+            isShowing = @$('.cs-modal').hasClass('showing')
             @playerViews = {}
             @_createSubViews()
             @render()
@@ -78,7 +78,7 @@ class root.SubSelectorView extends Backbone.View
 
 
     show: =>
-        @$('.modal').addClass('showing')
+        @$('.cs-modal').addClass('showing')
 
     hide: =>
-        @$('.modal').removeClass('showing')
+        @$('.cs-modal').removeClass('showing')
