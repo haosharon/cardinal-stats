@@ -16,8 +16,6 @@ class root.StatsModel extends Backbone.Model
         @watchTeam teamModel
 
     watchTeam: (teamModel) =>
-
-
         teamModel.on 'change:score', =>
             # find out if that team should rotate
             if teamModel.get('serving')

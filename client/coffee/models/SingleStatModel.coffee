@@ -33,6 +33,3 @@ class root.SingleStatModel extends Backbone.Model
 
     _increaseIndex: =>
         @index = (@index + 1) % @get('progression').length
-
-
-
