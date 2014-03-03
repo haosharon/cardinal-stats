@@ -31,20 +31,6 @@ _.extend root,
 root.statTypeToString = (statType) ->
     return root.C.STAT_KEYS[statType]
 
-root.getTemplate = (file, callback) ->
-    console.log 'root get template'
-    # if _.has root.HandlebarsRegistry, file
-    #     callback root.HandlebarsRegistry[file]
-    # $.ajax
-    #     url: "templates/#{file}.handlebars"
-    #     cache: true
-    #     success: (data) ->
-    #         template = Handlebars.compile data
-    #         _.extend root.HandlebarsRegistry,
-    #             file: template
-    #         callback template
-
-
 root.rotatedPosition = (position) ->
     if position == 1
         return 6
