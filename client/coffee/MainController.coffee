@@ -2,8 +2,8 @@ root = exports ? this
 class root.MainController
     constructor: (args) ->
         @container = args.container
-        @buildTeamModels()
-        @statsModel = @buildStatsModel(args.players)
+        @buildTeamModels(args.data)
+        @statsModel = @buildStatsModel(args.data)
         @initializeLogger()
 
         @gridController = new root.StatGridController(
@@ -36,23 +36,23 @@ class root.MainController
             newGame: true
             )
 
-    buildTeamModels: =>
+    buildTeamModels: (data) =>
         @focusTeam = new root.TeamModel(
-            team_name: 'MIT'
+            team_name: data.focusTeam.team_name
             players: new Backbone.Collection()
             )
         @otherTeam = new root.TeamModel(
-            team_name: 'other team'
+            team_name: data.otherTeam.team_name
             players: new Backbone.Collection()
             )
 
         @focusTeam.set 'opponent', @otherTeam
         @otherTeam.set 'opponent', @focusTeam
 
-    buildStatsModel: (players) =>
+    buildStatsModel: (data) =>
         statsModel = new root.StatsModel()
 
-        for player in players
+        for player in data.focusTeam.players
             playerModel = new root.PlayerModel(
                 player
                 )

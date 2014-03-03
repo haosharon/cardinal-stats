@@ -16,10 +16,10 @@
 
 root = exports ? this
 Meteor.call('getConfigurations', (e, r) ->
-    data = $.parseJSON(r)
+    data = EJSON.parse(r)
     $(document).ready ->
         mainController = new root.MainController(
             container: $('.stats-container')
-            players: data.players
+            data: data
         )
 )
