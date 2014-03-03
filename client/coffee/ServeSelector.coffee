@@ -157,9 +157,8 @@ class root.ServeSelectorView extends Backbone.View
 
 
     render: =>
-        template = root.getTemplate 'serve-selector', (template) =>
-            @$el.html template
-            @_clearCanvas()
-            @_drawAreaLines()
-            @showValue()
-            @initializeTapHandler()
+        @$el.html Template.serveSelector()
+        @_clearCanvas()
+        @_drawAreaLines()
+        @showValue()
+        @initializeTapHandler()

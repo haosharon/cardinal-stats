@@ -36,6 +36,10 @@ class root.StatGridController
             rowController = @positionedControllers[position - 1]
             rowController.setPlayer player
 
+        _.each @rowControllers, (rowController) =>
+            rowController.view.listenToChanges()
+            rowController.view.render()
+
     buildView: =>
         @view = new root.StatGridView(
             statsModel: @statsModel
@@ -59,11 +63,9 @@ class root.StatGridView extends Backbone.View
 
 
     render: =>
-        template = root.getTemplate 'stat-header-row', (template) =>
-            @$el.html template
-
-            _.each @rowControllers, (rowController) =>
-                @$el.append rowController.view.el
-            @$el.find('.stat-row').last().addClass('last')
+        @$el.html(Template.statRowHeader())
+        _.each @rowControllers, (rowController) =>
+            @$el.append rowController.view.el
+        @$el.find('.stat-row').last().addClass('last')
 
 

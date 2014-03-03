@@ -75,7 +75,6 @@ class root.StatRowView extends Backbone.View
     initialize: (args) =>
         @model = args.model
         @controller = args.controller
-        @render()
 
     listenToChanges: =>
         player = @model.get 'player'
@@ -85,26 +84,24 @@ class root.StatRowView extends Backbone.View
 
 
     render: =>
-        template = root.getTemplate 'stat-row', (template) =>
-            player = @model.get 'player'
-            @$el.html template()
-            playerView = new root.PlayerCellView(
-                controller: @controller
-                player: @model.get('player')
-                el: @$el.find('.player')
+        @$el.html(Template.statRow())
+        player = @model.get 'player'
+        playerView = new root.PlayerCellView(
+            controller: @controller
+            player: @model.get('player')
+            el: @$el.find('.player')
+            )
+        inputs = @$el.find('.stat-inp')
+        _.each inputs, (input, index) =>
+            statType = root.C.ORDER[index]
+            statModel = new root.SingleStatModel(
+                'progression': root.C.STAT_PROGRESSION[statType]
                 )
-            inputs = @$el.find('.stat-inp')
-            _.each inputs, (input, index) =>
-                statType = root.C.ORDER[index]
-                statModel = new root.SingleStatModel(
-                    'progression': root.C.STAT_PROGRESSION[statType]
-                    )
-                cellView = new root.StatCellView(
-                    model: statModel
-                    controller: @controller
-                    el: input
-                    player: player
-                    statType: statType
-                    )
-            @listenToChanges()
+            cellView = new root.StatCellView(
+                model: statModel
+                controller: @controller
+                el: input
+                player: player
+                statType: statType
+                )
 

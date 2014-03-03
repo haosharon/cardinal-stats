@@ -18,10 +18,9 @@ class root.PlayerCellView extends Backbone.View
         @subButton.on 'fastClick', @controller.sub
 
     render: =>
-        template = root.getTemplate 'player-cell', (template) =>
-            @$el.html template(
-                name: @player.get 'name'
-                number: @player.get 'number'
-                position: root.displayPosition @player.get('position')
-                )
-            @initializeFastButtons()
+        @$el.html Template.playerCell(
+            name: @player.get 'name'
+            number: @player.get 'number'
+            position: root.displayPosition @player.get('position')
+            )
+        @initializeFastButtons()

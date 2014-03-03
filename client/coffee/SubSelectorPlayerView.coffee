@@ -26,12 +26,11 @@ class root.SubSelectorPlayerView extends Backbone.View
         , 400)
 
     render: (odd) =>
-        root.getTemplate 'sub-selector-player', (template) =>
-            @$el.html template(@player.toJSON())
-            if odd
-                @$el.addClass('odd')
-            else
-                @$el.removeClass('odd')
+        @$el.html Template.subSelectorPlayer(@player.toJSON())
+        if odd
+            @$el.addClass('odd')
+        else
+            @$el.removeClass('odd')
 
     _removeEmphasis: =>
         @$el.removeClass('emphasize')

@@ -30,11 +30,10 @@ class root.DashboardView extends Backbone.View
 
 
     render: =>
-        template = root.getTemplate 'dashboard', (template) =>
-            @$el.html template
-            container = @$el.find('.score-container')
-            container.append @focusTeam.el
-            container.append @otherTeam.el
+        @$el.html Template.dashboard()
+        container = @$el.find('.score-container')
+        container.append @focusTeam.el
+        container.append @otherTeam.el
 
 
 

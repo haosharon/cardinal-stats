@@ -56,9 +56,8 @@ class root.SubSelectorView extends Backbone.View
             @render()
 
     render: =>
-        root.getTemplate 'sub-selector', (template) =>
-            @$el.html template
-            @_renderSubs()
+        @$el.html(Template.subSelector())
+        @_renderSubs()
 
     _createSubViews: =>
         @team.get('players').forEach (player) =>

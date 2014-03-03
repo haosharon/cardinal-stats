@@ -33,7 +33,6 @@ root.statTypeToString = (statType) ->
 
 root.getTemplate = (file, callback) ->
     console.log 'root get template'
-    console.log 'todo fix this!'
     # if _.has root.HandlebarsRegistry, file
     #     callback root.HandlebarsRegistry[file]
     # $.ajax
