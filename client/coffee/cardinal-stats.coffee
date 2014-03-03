@@ -13,3 +13,10 @@
 
 
 # # code to run on server at startup
+
+root = exports ? this
+$(document).ready ->
+    #statGrid = new StatGridController()
+    mainController = new root.MainController(
+        container: $('.stats-container')
+        )
