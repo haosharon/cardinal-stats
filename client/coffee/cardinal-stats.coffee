@@ -15,8 +15,11 @@
 # # code to run on server at startup
 
 root = exports ? this
-$(document).ready ->
-    #statGrid = new StatGridController()
-    mainController = new root.MainController(
-        container: $('.stats-container')
+Meteor.call('getConfigurations', (e, r) ->
+    data = $.parseJSON(r)
+    $(document).ready ->
+        mainController = new root.MainController(
+            container: $('.stats-container')
+            players: data.players
         )
+)

@@ -1,10 +1,9 @@
 root = exports ? this
-
 class root.MainController
     constructor: (args) ->
         @container = args.container
         @buildTeamModels()
-        @statsModel = @buildStatsModel()
+        @statsModel = @buildStatsModel(args.players)
         @initializeLogger()
 
         @gridController = new root.StatGridController(
@@ -50,67 +49,8 @@ class root.MainController
         @focusTeam.set 'opponent', @otherTeam
         @otherTeam.set 'opponent', @focusTeam
 
-    buildStatsModel: =>
-        players = [
-            {
-                number: 16
-                name: 'nicole'
-                position: 1
-                active: true
-            },
-            {
-                number: 14
-                name: 'jenny'
-                position: 2
-                active: true
-            },
-            {
-                number: 13
-                name: 'kristine'
-                position: 3
-                active: true
-            },
-            {
-                number: 15
-                name: 'rachel'
-                position: 4
-                active: true
-            },
-            {
-                number: 9
-                name: 'emma'
-                position: 5
-                active: true
-            },
-            {
-                number: 10
-                name: 'tati'
-                position: 6
-                active: true
-            },
-            {
-                number: 5
-                name: 'sharon'
-                active: false
-            },
-            {
-                number: 1
-                name: 'meryl'
-                active: false
-            },
-            {
-                number: 8
-                name: 'jess'
-                active: false
-            },
-            {
-                number: 2
-                name: 'lauren'
-                active: false
-            }
-        ]
+    buildStatsModel: (players) =>
         statsModel = new root.StatsModel()
-
 
         for player in players
             playerModel = new root.PlayerModel(
