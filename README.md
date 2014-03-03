@@ -2,7 +2,7 @@ Cardinal Stats
 ==============================
 
 
-Most collegiate volleyball teams track statistics based on a number rating system. It can be touch to track multiple statistics at once in a fast-paced game. This app aims to solve those problems by taking advantage of the iPad's large screen and using a space-saving __grid based system__, and by requiring user inputs through __sequences of inputs__ vs choosing an input option.
+Most collegiate volleyball teams track statistics based on a number rating system. It can be tough to track multiple statistics at once in a fast-paced game. This app aims to solve those problems by taking advantage of the iPad's large screen by using a space-saving __grid based system__, and by requiring user inputs through __sequences of inputs__ instead of choosing an one of many input options.
 
 Setting up for development
 --------------------------
