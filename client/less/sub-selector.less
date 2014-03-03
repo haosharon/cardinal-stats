@@ -1,0 +1,46 @@
+@import 'commons.less';
+
+.sub-selector-template {
+    .modal-content.content {
+        width: @sub-width;
+        max-height: @sub-height;
+        margin: (@total-height - @sub-height)/2 auto;
+        overflow-y: scroll;
+
+        .sub-list {
+            .sub-selector-player {
+                height: 60px;
+                padding: 10px;
+                line-height: 40px;
+                font-size: 40px;
+
+                .sub-selector-player-name, .sub-selector-player-number {
+                    display: inline-block;
+                    float: left;
+                }
+                .sub-selector-player-number {
+                    min-width: 50px;
+                    text-align: center;
+                    margin-right: 5px;
+                }
+                border: solid #5B2620;
+                border-width: 0 4px;
+
+                &:first-child {
+                    border-width: 4px 4px 0
+                }
+                &:last-child {
+                    border-width: 0 4px 4px;
+                }
+
+                &.odd {
+                    background-color: lighten(#5B2620, 50%);
+                }
+
+                &.emphasize {
+                    border: 4px solid darken(#5b2620, 5%);
+                }
+            }
+        }
+    }
+}

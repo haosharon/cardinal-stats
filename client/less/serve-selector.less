@@ -1,0 +1,29 @@
+@import 'commons.less';
+// @import 'modal.less';
+
+.serve-selector-template {
+    .modal-content.content {
+        width: @court-size;
+        height: @court-size;
+        // background-color: white;
+        // border: 2px solid black;
+        margin: (@total-height - @court-size)/2 auto;
+        .serve-selector-canvas {
+            border: 4px solid black;
+            background-color: #D3C9A5;
+            &.emphasize {
+                background-color: #A07735;
+            }
+        }
+        .serve-value {
+            position: absolute;
+            height: @serve-value-size;
+            width: @serve-value-size;
+            top: (@court-size - @serve-value-size)/2;
+            left: (@court-size - @serve-value-size)/2;
+            text-align: center;
+            line-height: @serve-value-size;
+            font-size: @serve-value-size;
+        }
+    }
+}

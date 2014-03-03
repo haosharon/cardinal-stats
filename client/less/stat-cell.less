@@ -1,0 +1,89 @@
+@import 'commons.less';
+
+.stat-inp-cell {
+    height: 100%;
+
+    .placeholder {
+        display: block;
+    }
+    .value {
+        display: none;
+    }
+
+    &.active {
+        .value {
+            display: block;
+        }
+        .placeholder {
+            display: none;
+        }
+    }
+    .summary, .main-opt {
+        height: 100%;
+        line-height: @row-height;
+        text-align: center;
+        border: solid white 0px;
+    }
+    .summary {
+        float: left;
+        min-width: 35px;
+        width: 25%;
+        border-width: 3px 0 3px 3px;
+    }
+    .main-opt {
+        width: 75%;
+        float: right;
+        border: solid white 0px;
+        border-width: 3px;
+
+        &.value {
+            font-size: 80px;
+        }
+
+        &.placeholder {
+            font-size: 20px;
+            .placeholder-name, .placeholder-stat-type {
+                line-height: 30px;
+            }
+            .placeholder-name {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .disable-selection;
+    .default-cursor;
+
+    &.DIG {
+        .colored-background(@orange);
+    }
+    &.HIT {
+        .colored-background(@green);
+    }
+    &.BLOCK {
+        .colored-background(@yellow);
+    }
+    &.SET {
+        .colored-background(@blue);
+    }
+    &.SR {
+        .colored-background(@purple);
+    }
+}
+
+.colored-background (@color) {
+    background-color: lighten(@color, 40%);
+    &.emphasize {
+        background-color: @color;
+    }
+    .main-opt {
+        &:active {
+            border-color: @color;
+            border-width: 3px;
+        }
+    }
+}

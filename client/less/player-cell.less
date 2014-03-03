@@ -1,0 +1,39 @@
+@import 'commons.less';
+
+.player {
+    height: 100%;
+    padding: 0px;
+    .position, .player-info, .serve {
+        position: relative;
+        float: left;
+        height: 100%;
+    }
+    .position {
+        width: 15%;
+        text-align: center;
+        line-height: @row-height;
+        border: solid black;
+        border-width: 0 1px 0 0;
+    }
+    .player-info {
+        width: 55%;
+        .info-wrapper {
+
+            width: 100%;
+            height: @row-height / 2;
+            position: relative;
+            top: @row-height / 4;
+            .name, .number {
+                line-height: @row-height / 4;
+                text-align: center;
+            }
+        }
+    }
+    .serve {
+        width: 30%;
+        border: solid black;
+        border-width: 0 0 0 1px;
+        line-height: @row-height;
+        text-align: center;
+    }
+}

@@ -1,0 +1,26 @@
+.modal-container {
+    .modal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 99999;
+        display: block;
+        pointer-events: none;
+
+        .modal-content {
+            display: block;
+            position: relative;
+            margin: auto auto;
+            border-radius: 0px;
+        }
+
+        &.showing {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, .6);
+            pointer-events: auto;
+        }
+    }
+}

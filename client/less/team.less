@@ -1,0 +1,33 @@
+@import 'commons.less';
+.score-container {
+    height: @score-container-height;
+    margin-top: @header-height + (@total-height - @header-height - @score-container-height) / 2;
+
+    .top {
+        border: black solid;
+        border-width: 0 0 1px 0;
+    }
+    .bottom {
+        border: black solid;
+        border-width: 1px 0 0 0;
+    }
+    .team {
+        .disable-selection;
+        .default-cursor;
+        .score {
+            height: @score-height;
+            line-height: @score-height;
+            width: 100%;
+            font-size: 70px;
+            text-align: center;
+        }
+        .name {
+            height: @name-height;
+            line-height: @name-height;
+            width: 100%;
+            font-size: 40px;
+            text-align: center;
+        }
+    }
+
+}
