@@ -92,6 +92,11 @@ class root.ServeSelectorView extends Backbone.View
 
     show: =>
         @$el.find('.cs-modal').addClass('showing')
+        @$('.cs-modal').on('click', (e) =>
+            console.log $(e.target)
+            if @$('.cs-modal-content').find($(e.target)).length == 0
+                @hide()
+            )
         @selectorModel.set('hasClicked', false)
         @_clearCanvas()
         @_drawAreaLines()
@@ -100,6 +105,7 @@ class root.ServeSelectorView extends Backbone.View
 
     hide: =>
         @$('.cs-modal').removeClass('showing')
+        @$('.cs-modal').off('click')
 
     _drawAreaLines: =>
         canvas = @$('.serve-selector-canvas')[0]

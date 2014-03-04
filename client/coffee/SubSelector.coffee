@@ -78,7 +78,13 @@ class root.SubSelectorView extends Backbone.View
 
 
     show: =>
+        @$('.cs-modal').on('click', (e) =>
+            console.log $(e.target)
+            if @$('.cs-modal-content').find($(e.target)).length == 0
+                @hide()
+            )
         @$('.cs-modal').addClass('showing')
 
     hide: =>
         @$('.cs-modal').removeClass('showing')
+        @$('.cs-modal').off('click')
