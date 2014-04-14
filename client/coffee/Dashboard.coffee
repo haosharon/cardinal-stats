@@ -1,6 +1,7 @@
 root = exports ? this
 class root.DashboardController
     constructor: (args) ->
+        @mainController = args.mainController
         @container = args.container
         @statsModel = args.statsModel
         @logger = args.logger
@@ -10,8 +11,12 @@ class root.DashboardController
         @view = new root.DashboardView(
             statsModel: @statsModel
             logger: @logger
+            controller: @
             )
         @container.append @view.$el
+
+    goToResults: =>
+        @mainController.goToResults()
 
 class root.DashboardView extends Backbone.View
     className: 'dashboard'
@@ -19,6 +24,7 @@ class root.DashboardView extends Backbone.View
         # todo
         @logger = args.logger
         @statsModel = args.statsModel
+        @controller = args.controller
         # for now, say focus is on top
         @focusTeam = new root.TeamView(
             top: true
@@ -32,6 +38,11 @@ class root.DashboardView extends Backbone.View
             )
 
         @render()
+        @resultsNavButton = new root.FastButton(
+            el: @$('.results-nav')
+            )
+        @resultsNavButton.on 'fastClick', =>
+            @controller.goToResults()
 
 
     render: =>

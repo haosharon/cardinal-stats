@@ -19,7 +19,8 @@ Meteor.call('getConfigurations', (e, r) ->
     data = EJSON.parse(r)
     $(document).ready ->
         mainController = new root.MainController(
-            container: $('.stats-container')
+            statsContainer: $('.stats-container')
+            resultsContainer: $('.results-container')
             data: data
         )
 )

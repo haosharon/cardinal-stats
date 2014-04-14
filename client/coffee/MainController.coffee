@@ -1,34 +1,41 @@
 root = exports ? this
 class root.MainController
     constructor: (args) ->
-        @container = args.container
+        @statsContainer = args.statsContainer
+        @resultsContainer = args.resultsContainer
         @buildTeamModels(args.data)
         @statsModel = @buildStatsModel(args.data)
         @initializeLogger()
 
         @gridController = new root.StatGridController(
             mainController: @
-            container: @container
+            container: @statsContainer
             statsModel: @statsModel
             logger: @logger
             )
         @dashboardController = new root.DashboardController(
             mainController: @
-            container: @container
+            container: @statsContainer
             statsModel: @statsModel
             logger: @logger
             )
         @serveSelector = new root.ServeSelectorController(
             mainController: @
-            container: @container
+            container: @statsContainer
             statsModel: @statsModel
             logger: @logger
             )
         @subSelector = new root.SubSelectorController(
             mainController: @
-            container: @container
+            container: @statsContainer
             statsModel: @statsModel
             logger: @logger
+            )
+
+        @resultsController = new root.StatResultsController(
+            mainController: @
+            container: @resultsContainer
+            statsModel: @statsModel
             )
 
     initializeLogger: =>
@@ -62,3 +69,8 @@ class root.MainController
         statsModel.setOtherTeam @otherTeam
 
         return statsModel
+
+    goToResults: =>
+        # hide this some how
+        @statsContainer.addClass 'hidden'
+        @resultsController.showResults()
