@@ -6,7 +6,7 @@ root.HandlebarsRegistry = {}
 
 CONSTANTS = {}
 
-statsToTrack = ['DIG', 'HIT', 'BLOCK', 'SET', 'SR']
+statsToTrack = ['DIG', 'HIT', 'BLOCK', 'SET', 'SR', 'SERVE', 'SUB', 'SCORE']
 statKeys = {}
 order = []
 _.each statsToTrack, (val, index) ->

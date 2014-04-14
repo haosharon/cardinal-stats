@@ -29,8 +29,9 @@ class root.StatRowController
 
     makeSub: (newPlayer, previousPlayer) =>
         data = _.extend {}, {
-            'player': newPlayer
+            'player': previousPlayer
             'statType': 7 # HACK
+            'value': newPlayer.get('number')
             'options': {
                 'previousPlayer': previousPlayer
                 'position': newPlayer.get('position')

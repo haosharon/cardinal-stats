@@ -45,6 +45,7 @@ class root.SubSelectorView extends Backbone.View
     initialize: (args) =>
         @controller = args.controller
         @team = args.team
+        @logger = args.logger
         @playerViews = {}
         @_createSubViews()
         @render()

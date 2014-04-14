@@ -5,6 +5,7 @@ class root.TeamView extends Backbone.View
     initialize: (args) =>
         @model = args.model
         @top = args.top
+        @logger = args.logger
         @render()
         @initializeClickable()
         @watchScore()
@@ -20,6 +21,12 @@ class root.TeamView extends Backbone.View
         @model.on 'change:score', =>
             score = @model.get 'score'
             @$el.find('.score').html score
+            stat = new root.SingleStatValueModel(
+                team: @model.get('team_name')
+                statType: 8
+                value: @model.get('score')
+                )
+            @logger.logStat(stat)
 
     render: =>
         @$el.html Template.team(

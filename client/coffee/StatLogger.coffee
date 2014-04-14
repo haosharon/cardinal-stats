@@ -14,8 +14,15 @@ class root.StatLogger
     buildLogLine: (stat) =>
         # a log line will be comma separated values:
         # player number, stat type, value
-        playerNumber = stat.playerNumber()
-        statTypeString = stat.statTypeString()
-        statValue = stat.get 'value'
-        time = (new Date()).getTime()
-        return "#{playerNumber}, #{statTypeString}, #{statValue}, #{time}"
+        if stat.get('statType') == 8 # SCORE
+            # team score
+            team = stat.get('team')
+            statValue = stat.get 'value'
+            time = (new Date()).getTime()
+            return "#{team}, SCORE, #{statValue}, #{time}"
+        else
+            playerNumber = stat.playerNumber()
+            statTypeString = stat.statTypeString()
+            statValue = stat.get 'value'
+            time = (new Date()).getTime()
+            return "#{playerNumber}, #{statTypeString}, #{statValue}, #{time}"
