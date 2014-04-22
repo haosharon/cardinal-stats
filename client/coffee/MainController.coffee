@@ -58,11 +58,15 @@ class root.MainController
 
     buildStatsModel: (data) =>
         statsModel = new root.StatsModel()
-
         for player in data.focusTeam.players
             playerModel = new root.PlayerModel(
                 player
                 )
+            for statType in [1..6]
+                statModel = new root.SingleStatModel(
+                    'progression': root.C.STAT_PROGRESSION[statType]
+                    )
+                playerModel.addStatModel(statModel, statType)
             @focusTeam.get('players').add(playerModel)
 
         statsModel.setFocusTeam @focusTeam

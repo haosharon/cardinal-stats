@@ -1,34 +1,44 @@
 root = exports ? this
 class root.StatResultsController
-  constructor: (args) ->
-    @mainController = args.mainController
-    @container = args.container
-    @statsModel = args.statsModel
-    @buildView()
+    constructor: (args) ->
+        @mainController = args.mainController
+        @container = args.container
+        @statsModel = args.statsModel
+        @buildView()
 
-  buildView: =>
-    @view = new root.StatResultsView(
-      controller: @
-      statsModel: @statsModel
-      )
-    @container.append @view.$el
+    buildView: =>
+        @view = new root.StatResultsView(
+            controller: @
+            statsModel: @statsModel
+            )
+        @container.append @view.$el
 
-  showResults: =>
-    @container.removeClass 'hidden'
+    showResults: =>
+        @container.removeClass 'hidden'
+        @view.render()
 
 class root.StatResultsView extends Backbone.View
-  className: 'stat-results'
-  initialize: (@args) =>
-    @controller = args.controller
-    @statsModel = args.statsModel
-    @render()
-    @listenToStats()
+    className: 'stat-results'
+    initialize: (@args) =>
+        @controller = args.controller
+        @statsModel = args.statsModel
 
-  listenToStats: =>
-    # TODO
+    getData: =>
+        data = {}
+        team = @statsModel.getFocusTeam()
+        data.team_name = team.get('team_name')
+        team.get('players').forEach (player) =>
+            totalHits = player.getHitData()
+            console.log 'totalHits'
+            console.log totalHits
+            srData = player.getSrData()
+            console.log 'sr data'
+            console.log srData
 
-  render: =>
-    @$el.html Template.results(
-      team_name: @statsModel.getFocusTeam()?.get('team_name')
-      )
+        return data
+
+    render: =>
+        @$el.html Template.results(
+            @getData()
+            )
 

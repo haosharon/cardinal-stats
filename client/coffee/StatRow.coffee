@@ -95,9 +95,9 @@ class root.StatRowView extends Backbone.View
         inputs = @$el.find('.stat-inp')
         _.each inputs, (input, index) =>
             statType = root.C.ORDER[index]
-            statModel = new root.SingleStatModel(
-                'progression': root.C.STAT_PROGRESSION[statType]
-                )
+
+            statModel = player.getStatModel(statType)
+
             cellView = new root.StatCellView(
                 model: statModel
                 controller: @controller
@@ -105,4 +105,6 @@ class root.StatRowView extends Backbone.View
                 player: player
                 statType: statType
                 )
+
+
 
