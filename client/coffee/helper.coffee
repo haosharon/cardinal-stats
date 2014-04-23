@@ -20,10 +20,10 @@ _.extend CONSTANTS,
     STAT_KEYS: statKeys
     STAT_PROGRESSION:
         1: [0, 1, 2, 3] # this is a hack. it should be CONSTANTS.DIG but coffee is yelling at me :(
-        2:['l', '+', 'O']
-        3: [1]
-        4: [1]
-        5: [0, 1, 2, 3]
+        2: ['l', '+', 'O'] # HIT
+        3: [1] # SET
+        4: [1] # SR
+        5: [0, 1, 2, 3] # SERVE
 
 _.extend root,
     C: CONSTANTS

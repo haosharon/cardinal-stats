@@ -1,0 +1,56 @@
+@import 'commons.less';
+.player-results, .player-results-header {
+  .player-results-header {
+    height: 80px;
+  }
+  .results-row {
+    border-style: solid black;
+    border-width: 1px 0
+    height: 40px;
+    .results-cell {
+      display: inline-block;
+      min-width: 90px;
+      text-align: center;
+      height: 100%;
+      &.player-number {
+        text-align: right;
+        padding-right: 10px;
+      }
+      &.player-name {
+        text-align: left;
+      }
+    }
+    .inner-cell {
+      width: 90px;
+    }
+    .serve-results {
+      .serve-total, .serve-ace, .serve-error {
+        display: inline-block;
+      }
+    }
+    .hit-results {
+      background-color: lighten(@green, 40%);
+      .hit-total, .hit-percent {
+        display: inline-block;
+      }
+    }
+    .sr-results {
+      background-color: lighten(@purple, 40%);
+      .sr-total, .sr-avg {
+        display: inline-block;
+      }
+    }
+
+    .dig-results {
+      background-color: lighten(@orange, 40%);
+    }
+
+    .block-results {
+      background-color: lighten(@yellow, 40%);
+    }
+
+    .assist-results {
+      background-color: lighten(@blue, 40%);
+    }
+  }
+}

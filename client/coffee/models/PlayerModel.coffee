@@ -21,43 +21,94 @@ class root.PlayerModel extends Backbone.Model
             rotatedPosition = root.rotatedPosition(position)
             @set 'position', rotatedPosition
 
+    getResultData: =>
+        data = {
+            name: @get('name')
+            number: @get('number')
+        }
+        _.extend data,
+            @getHitData(),
+            @getSrData(),
+            @getSetData(),
+            @getServeData(),
+            @getBlockData()
+            @getDigData()
+
+        return data
+
+
     getHitData: =>
         history = @hitStatModel.get('history')
         data = _.countBy history, (x) =>
             if x is 'l'
-                return 'hit'
+                return 'hitRegular'
             if x is '+'
-                return 'kill'
+                return 'hitKill'
             if x is 'O'
-                return 'error'
+                return 'hitError'
         data = _.defaults data, {
-            hit: 0.0
-            kill: 0.0
-            error: 0.0
+            hitRegular: 0.0
+            hitKill: 0.0
+            hitError: 0.0
         }
-        data.attempt = data.hit + data.kill + data.error
-        if data.attempt > 0
-            data.hittingPercentage = (data.kill - data.error) / parseFloat(data.attempt)
+        data.hitTotal = data.hitRegular + data.hitKill + data.hitError
+        if data.hitTotal > 0
+            hitPercent = (data.hitKill - data.hitError) / parseFloat(data.hitTotal)
+            data.hitPercent = hitPercent.toString().slice(0,5)
         else
-            data.hittingPercentage = 0
+            data.hitPercent = '0'
+        return data
 
     getSrData: =>
         data = {}
         history = @srStatModel.get('history')
-        data.total = _.size history
+        data.srTotal = _.size history
         sum = _.reduce history,
             (memo, num) ->
                 return memo + num
             , 0.0
-        if data.total > 0
-            data.avg = sum / data.total
+        if data.srTotal > 0
+            srAvg = sum / data.srTotal
+            data.srAvg = srAvg.toString().slice(0, 5)
 
         data = _.defaults data, {
-            total: 0
-            avg: 0
+            srTotal: 0
+            srAvg: 0
         }
         return data
 
+    getSetData: =>
+        return {
+            setTotal: _.size(@setStatModel.get('history'))
+        }
+
+    getServeData: =>
+        data = {}
+        history = @serveStatModel.get('history')
+        data = _.countBy history, (x) =>
+            if x == 0
+                return 'serveError'
+            else if x == 3
+                return 'serveAce'
+            else
+                return "serve#{x}"
+        data = _.defaults data, {
+            serveError: 0
+            serveAce: 0
+            serveTotal: _.size(history)
+        }
+
+        return data
+
+    getBlockData: =>
+        return {
+            blockTotal: _.size(@blockStatModel.get('history'))
+        }
+
+    getDigData: =>
+        return {
+            digTotal: _.size(@digStatModel.get('history'))
+        }
 
     addStatModel: (statModel, statType) =>
         if statType == 1 # DIG

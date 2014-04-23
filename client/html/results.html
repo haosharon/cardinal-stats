@@ -5,10 +5,106 @@
             {{team_name}}
         </div>
         <div class="results-summary">
-            summary
+            {{> playerResultsHeader }}
         </div>
         <div class="results-logs">
             logs
+        </div>
+    </div>
+</template>
+
+<template name="playerResults">
+    <div class="player-results-wrapper results-row">
+        <div class="player-number results-cell">
+            {{ number }}
+        </div>
+        <div class="player-name results-cell">
+            {{ name }}
+        </div>
+        <div class="serve-results results-cell">
+            <div class="serve-total inner-cell">
+                {{ serveTotal }}
+            </div>
+            <div class="serve-ace inner-cell">
+                {{ serveAce }}
+            </div>
+            <div class="serve-error inner-cell">
+                {{ serveError }}
+            </div>
+        </div>
+        <div class="dig-results results-cell">
+            {{ digTotal }}
+        </div>
+        <div class="hit-results results-cell">
+            <div class="hit-total inner-cell">
+                {{ hitTotal }}
+            </div>
+            <div class="hit-percent inner-cell">
+                {{ hitPercent }}
+            </div>
+        </div>
+        <div class="block-results results-cell">
+            {{ blockTotal }}
+        </div>
+        <div class="assist-results results-cell">
+            {{ setTotal }}
+        </div>
+        <div class="sr-results results-cell">
+            <div class="sr-total inner-cell">
+                {{ srTotal }}
+            </div>
+            <div class="sr-avg inner-cell">
+                {{ srAvg }}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="playerResultsHeader">
+    <div class="player-results-header">
+        <div class="player-results-wrapper results-row">
+            <div class="player-number results-cell header-cell">
+                Number
+            </div>
+            <div class="player-name results-cell header-cell">
+                Name
+            </div>
+            <div class="serve-results results-cell header-cell">
+                <div class="serve-total inner-cell">
+                    Serve Total
+                </div>
+                <div class="serve-ace inner-cell">
+                    Serve Ace
+                </div>
+                <div class="serve-error inner-cell">
+                    Serve Error
+                </div>
+            </div>
+            <div class="dig-results results-cell header-cell">
+                Dig Total
+            </div>
+            <div class="hit-results results-cell header-cell">
+                <div class="hit-total inner-cell">
+                    Hit Total
+                </div>
+                <div class="hit-percent inner-cell">
+                    Hit Percent
+                </div>
+            </div>
+            <div class="block-results results-cell header-cell">
+                Block Total
+            </div>
+            <div class="assist-results results-cell header-cell">
+                Assist Total
+            </div>
+            <div class="sr-results results-cell header-cell">
+                <div class="sr-total inner-cell">
+                    SR Total
+                </div>
+                <div class="sr-avg inner-cell">
+                    SR Average
+                </div>
+            </div>
         </div>
     </div>
 </template>

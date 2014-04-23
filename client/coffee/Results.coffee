@@ -23,22 +23,27 @@ class root.StatResultsView extends Backbone.View
         @controller = args.controller
         @statsModel = args.statsModel
 
-    getData: =>
-        data = {}
-        team = @statsModel.getFocusTeam()
-        data.team_name = team.get('team_name')
-        team.get('players').forEach (player) =>
-            totalHits = player.getHitData()
-            console.log 'totalHits'
-            console.log totalHits
-            srData = player.getSrData()
-            console.log 'sr data'
-            console.log srData
-
-        return data
-
     render: =>
+
         @$el.html Template.results(
             @getData()
             )
+        team = @statsModel.getFocusTeam()
+        team.get('players').forEach (player) =>
+            playerView = new root.SinglePLayerResultView(
+                controller: @controller
+                playerModel: player
+                )
+            playerView.render()
+            @$('.results-summary').append(playerView.$el)
 
+class root.SinglePLayerResultView extends Backbone.View
+    className: 'player-results'
+    initialize: (@args) =>
+        @controller = args.controller
+        @playerModel = args.playerModel
+
+    render: =>
+        @$el.html Template.playerResults(
+            @playerModel.getResultData()
+            )
