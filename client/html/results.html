@@ -1,15 +1,17 @@
 <template name="results">
-    <div class="stat-results">
-        BRO THESE ARE MY RESULTS
-        <div class="results-team-name">
+    <div class="results-header">
+        <div class="results-nav-back results-header-inner">
+            Back
+        </div>
+        <div class="results-team-name results-header-inner">
             {{team_name}}
         </div>
-        <div class="results-summary">
-            {{> playerResultsHeader }}
-        </div>
-        <div class="results-logs">
-            logs
-        </div>
+    </div>
+    <div class="results-summary">
+        {{> playerResultsHeader }}
+    </div>
+    <div class="results-logs">
+        logs
     </div>
 </template>
 

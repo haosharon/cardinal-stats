@@ -17,17 +17,33 @@ class root.StatResultsController
         @container.removeClass 'hidden'
         @view.render()
 
+    hideResults: =>
+        @container.addClass 'hidden'
+        @mainController.goToGrid()
+
 class root.StatResultsView extends Backbone.View
     className: 'stat-results'
     initialize: (@args) =>
         @controller = args.controller
         @statsModel = args.statsModel
+        @resultsNavBack = null
+
+    getData: =>
+        data = {}
+        team = @statsModel.getFocusTeam()
+        data.team_name = team.get('team_name')
+        return data
 
     render: =>
-
         @$el.html Template.results(
             @getData()
             )
+        @resultsNavBack = new root.FastButton(
+            el: @$('.results-nav-back')
+            )
+        @resultsNavBack.on 'fastClick', =>
+            @controller.hideResults()
+
         team = @statsModel.getFocusTeam()
         team.get('players').forEach (player) =>
             playerView = new root.SinglePLayerResultView(

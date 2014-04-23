@@ -78,3 +78,6 @@ class root.MainController
         # hide this some how
         @statsContainer.addClass 'hidden'
         @resultsController.showResults()
+
+    goToGrid: =>
+        @statsContainer.removeClass 'hidden'
